@@ -7,7 +7,11 @@ from packages import convert_img_to_webp as convert_img
 from packages import manage_thread as th
 from packages import my_gui as g
 
-if __name__ == '__main__':
+def main():
+    '''
+        main 함수
+    '''
+
     # thread 관련 변수
     threads_list = []
 
@@ -20,4 +24,7 @@ if __name__ == '__main__':
 
     th.run(threads_list)
     th.end(threads_list, '모든 스레드가 종료되었습니다.')
+
+if __name__ == '__main__':
+    main()
     
