@@ -1,6 +1,7 @@
 '''
     main.py
 '''
+from ast import arg
 import os
 import threading
 from multiprocessing import Pool
@@ -12,9 +13,12 @@ from packages import my_gui as g
 
 
 def f(args):
+    
     with Image.open(args) as img:
         img.save(args.with_suffix('.webp'),'WEBP')
-        print(os.getpid(), threading.current_thread().name, args.name)
+        #진행중 파일명, 현재 /전체, 백분율 출력
+        print(args.name)
+    os.remove(args)
 
 
 if __name__ == '__main__':
@@ -25,5 +29,4 @@ if __name__ == '__main__':
     
     pool = Pool()
     pool.map(f, open_files)
-
-
+    pool.join()
